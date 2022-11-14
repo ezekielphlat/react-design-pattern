@@ -1,19 +1,7 @@
-import { SplitScreen } from "./SplitScreen";
-
-const LeftHandComponent = ({ name }) => {
-  return <h1 style={{ backgroundColor: "green" }}>{name}</h1>;
-};
-const RightHandComponent = ({ message }) => {
-  return <p style={{ backgroundColor: "red" }}>{message}</p>;
-};
+import { ControlledForm } from "./ControlledForm";
 
 function App() {
-  return (
-    <SplitScreen leftWeight={1} rightWeight={3}>
-      <LeftHandComponent name="Ezekiel Abodesegun" />
-      <RightHandComponent message="This is just a message" />
-    </SplitScreen>
-  );
+  return <ControlledForm />;
 }
 
 export default App;
