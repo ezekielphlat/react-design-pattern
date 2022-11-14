@@ -4,7 +4,8 @@ import { LargePersonListItem } from "./people/LargePersonListItem";
 import { NumberedList } from "./NumberedList";
 import { SmallProductListItem } from "./products/SmallProductListItem";
 import { LargeProductListItem } from "./products/LargeProductListItem";
-import { Modal } from "./Modal";
+import { ControlledModal } from "./ControlledModal";
+import { useState } from "react";
 const people = [
   {
     name: "John Doe",
@@ -48,6 +49,7 @@ const products = [
 ];
 
 function App() {
+  const [shouldShowModel, setShouldShowModel] = useState(false);
   return (
     <>
       {/* <RegularList
@@ -66,9 +68,17 @@ function App() {
         itemComponent={SmallProductListItem}
       /> */}
 
-      <Modal>
+      <ControlledModal
+        shouldShow={shouldShowModel}
+        onRequestClose={() => {
+          setShouldShowModel(false);
+        }}
+      >
         <LargeProductListItem product={products[0]} />
-      </Modal>
+      </ControlledModal>
+      <button onClick={() => setShouldShowModel(!shouldShowModel)}>
+        Show Modal
+      </button>
     </>
   );
 }
